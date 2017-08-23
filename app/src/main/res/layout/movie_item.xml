@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_movie_poster_item"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/moonlight" />
+
+    <LinearLayout
+        android:background="@color/colorBackgroundText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_movie_name_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do Filme"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_movie_release_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data do Filme"/>
+    </LinearLayout>
+</LinearLayout>
