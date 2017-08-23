@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.renancardoso.moremovies.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by RenanCardoso on 23/08/2017.
@@ -20,14 +21,14 @@ public class MoviesAdapter extends RecyclerView.Adapter {
 
         final TextView movieName;
         final TextView movieRelease;
-        final ImageView moviePhote;
+        final ImageView moviePhoto;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             movieName = (TextView) itemView.findViewById(R.id.tv_movie_name_item);
             movieRelease = (TextView) itemView.findViewById(R.id.tv_movie_release_item);
-            moviePhote = (ImageView) itemView.findViewById(R.id.iv_movie_poster_item);
+            moviePhoto = (ImageView) itemView.findViewById(R.id.iv_movie_poster_item);
         }
     }
 
@@ -46,7 +47,9 @@ public class MoviesAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        MyViewHolder myHolder = (MyViewHolder) holder;
+        Picasso.with(context).load("https://i.imgur.com/tGbaZCY.jpg").into(myHolder.moviePhoto);
+        //Picasso.with(context).load(R.drawable.dog).into(myHolder.moviePhoto);
     }
 
     @Override
