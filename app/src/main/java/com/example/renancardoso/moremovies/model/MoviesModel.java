@@ -1,9 +1,12 @@
 package com.example.renancardoso.moremovies.model;
 
 
+import com.example.renancardoso.moremovies.Config;
 import com.google.gson.annotations.SerializedName;
 
-public class MoviesModel {
+import java.io.Serializable;
+
+public class MoviesModel implements Serializable{
 
     @SerializedName("vote_count")
     private String voteCount;
@@ -46,11 +49,11 @@ public class MoviesModel {
     }
 
     public String getPosterPath() {
-        return posterPath;
+        return Config.BASE_IMAGE_URL_POSTER + posterPath;
     }
 
     public String getBackdropPath() {
-        return backdropPath;
+        return Config.BASE_IMAGE_URL_BACKDROP + backdropPath;
     }
 
     public String getReleaseDate() {

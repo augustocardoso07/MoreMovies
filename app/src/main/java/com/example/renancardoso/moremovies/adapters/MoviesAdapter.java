@@ -2,6 +2,8 @@ package com.example.renancardoso.moremovies.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,16 +31,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.movieName.setText(moviesList.get(position).getTitle());
         holder.movieRelease.setText(moviesList.get(position).getReleaseDate());
-        String posterURL = Config.BASE_IMAGE_URL_POSTER + moviesList.get(position).getPosterPath();
+        String posterURL = moviesList.get(position).getPosterPath();
         Picasso.with(context).load(posterURL).into(holder.moviePhoto);
 
         holder.movieLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, DescriptionMovieActivity.class));
+                Intent intent = new Intent(context, DescriptionMovieActivity.class);
+                intent.putExtra("movie", moviesList.get(position));
+                context.startActivity(intent);
             }
         });
 
@@ -55,7 +59,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         final TextView movieName;
         final TextView movieRelease;
         final ImageView moviePhoto;
-        final LinearLayout movieLayout;
+        final ConstraintLayout movieLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -63,7 +67,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
             movieName = (TextView) itemView.findViewById(R.id.tv_movie_name_item);
             movieRelease = (TextView) itemView.findViewById(R.id.tv_movie_release_item);
             moviePhoto = (ImageView) itemView.findViewById(R.id.iv_movie_poster_item);
-            movieLayout = (LinearLayout) itemView.findViewById(R.id.ll_movie_item);
+            movieLayout = (ConstraintLayout) itemView.findViewById(R.id.ll_movie_item);
         }
     }
 
